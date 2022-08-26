@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS posts CASCADE;
+
+CREATE TABLE posts (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	caption VARCHAR NOT NULL
+);
+
+INSERT INTO posts (
+caption
+)
+VALUES (
+'is it trash?'
+);
