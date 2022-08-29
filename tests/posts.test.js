@@ -43,8 +43,9 @@ describe('posts routes', () => {
 
   it('PUT /posts/:id should update a specific post', async () => {
     const resp = await request(app).put('/api/v1/posts/1').send({
-      caption: 'my updated caption'
+      caption: 'my updated caption',
     });
+    console.log('resp.body', resp.body);
     expect(resp.body.caption).toBe('my updated caption');
   });
 
