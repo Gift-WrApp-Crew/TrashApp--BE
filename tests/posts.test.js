@@ -26,6 +26,12 @@ describe('posts routes', () => {
     ]);
   });
 
+  it('GET /posts/:id should return a specific post', async () => {
+    const resp = await request(app).get('/api/v1/posts/2');
+    expect(resp.body.caption).toBe('this is another caption');
+  });
+
+
 
   it('POST /posts should create a new post', async () => {
     const post = {
