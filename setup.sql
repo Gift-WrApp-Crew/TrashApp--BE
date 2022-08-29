@@ -7,13 +7,13 @@ CREATE TABLE posts (
 	image_url VARCHAR(128) NOT NULL
 	-- cloudinary_id VARCHAR(128) NOT NULL
 );
-
+-- add user_id column as a foreign key relationship with app_user.id
 CREATE TABLE app_users (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	email TEXT NOT NULL,
 	password_hash TEXT NOT NULL,
-	username VARCHAR NOT NULL UNIQUE
-)
+	username TEXT
+);
 
 INSERT INTO posts (
 caption,
