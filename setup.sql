@@ -11,6 +11,7 @@ INSERT INTO posts (
 caption,
 image_url
 )
-VALUES (
-'is it trash?', ''
-);
+VALUES 
+('is it trash?', ''),
+('this is another caption', ''),
+('and another caption', '');
