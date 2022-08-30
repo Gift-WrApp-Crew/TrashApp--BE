@@ -17,7 +17,7 @@ describe('posts routes', () => {
     return setup(pool);
   });
 
-  it.only('POST /image-upload should upload an image to cloudinary', async () => {
+  it.skip('POST /image-upload should upload an image to cloudinary', async () => {
     const res = await request(app).post('/image-upload').send({ 
       image: 'images/cat.jpg'
     });
