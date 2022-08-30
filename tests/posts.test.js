@@ -45,9 +45,10 @@ describe('posts routes', () => {
     const resp = await request(app).put('/api/v1/posts/1').send({
       caption: 'my updated caption',
     });
-    console.log('resp.body', resp.body);
     expect(resp.body.caption).toBe('my updated caption');
   });
+
+
 
   afterAll(() => {
     pool.end();
