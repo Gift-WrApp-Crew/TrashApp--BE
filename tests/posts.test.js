@@ -8,32 +8,39 @@ describe('posts routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('GET /posts gets a list of all posts', async () => {
+  it.only('GET /posts gets a list of all posts', async () => {
     const resp = await request(app).get('/api/v1/posts');
     expect(resp.body).toEqual([
       {
-        'caption': 'is it trash?',
-        'id': '1',
+        caption: 'is it trash?',
+        created_at: '2022-08-31T19:54:30.312Z',
+        id: '1',
+        image_url: '',
+        username: '',
       },
       {
-        'caption': 'this is another caption',
-        'id': '2',
+        caption: 'this is another caption',
+        created_at: '2022-08-31T19:54:30.312Z',
+        id: '2',
+        image_url: '',
+        username: '',
       },
       {
-        'caption': 'and another caption',
-        'id': '3',
+        caption: 'and another caption',
+        created_at: '2022-08-31T19:54:30.312Z',
+        id: '3',
+        image_url: '',
+        username: '',
       },
     ]);
   });
 
-  it('GET /posts/:id should return a specific post', async () => {
+  it.only('GET /posts/:id should return a specific post', async () => {
     const resp = await request(app).get('/api/v1/posts/2');
     expect(resp.body.caption).toBe('this is another caption');
   });
 
-
-
-  it('POST /posts should create a new post', async () => {
+  it.only('POST /posts should create a new post', async () => {
     const post = {
       caption: 'it IS trash!',
     };
@@ -41,14 +48,12 @@ describe('posts routes', () => {
     expect(resp.body.caption).toBe('it IS trash!');
   });
 
-  it('PUT /posts/:id should update a specific post', async () => {
+  it.only('PUT /posts/:id should update a specific post', async () => {
     const resp = await request(app).put('/api/v1/posts/1').send({
       caption: 'my updated caption',
     });
     expect(resp.body.caption).toBe('my updated caption');
   });
-
-
 
   afterAll(() => {
     pool.end();

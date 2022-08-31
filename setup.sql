@@ -8,7 +8,9 @@ CREATE TABLE posts (
 	caption VARCHAR,
 	image_url VARCHAR(128),
 	created_at TIMESTAMP,
-	username VARCHAR
+	username VARCHAR,
+  trash_reaction BIGINT,
+  treasure_reaction BIGINT
 	-- cloudinary_id VARCHAR(128) NOT NULL
 );
 -- add user_id column as a foreign key relationship with app_user.id
@@ -38,13 +40,15 @@ INSERT INTO posts (
 caption,
 image_url,
 created_at,
-username
+username,
+trash_reaction,
+treasure_reaction
 )
 
 VALUES 
-('is it trash?', '', CURRENT_TIMESTAMP, ''),
-('this is another caption', '', CURRENT_TIMESTAMP, ''),
-('and another caption', '', CURRENT_TIMESTAMP, '');
+('is it trash?', '', CURRENT_TIMESTAMP, '', 2, 2),
+('this is another caption', '', CURRENT_TIMESTAMP, '', 2, 2),
+('and another caption', '', CURRENT_TIMESTAMP, '', 2, 2);
 
 INSERT INTO reactions (
 	reaction_type
