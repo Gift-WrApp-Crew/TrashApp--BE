@@ -4,7 +4,9 @@ DROP TABLE IF EXISTS app_users CASCADE;
 CREATE TABLE posts (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	caption VARCHAR,
-	image_url VARCHAR(128) NOT NULL
+	image_url VARCHAR(128),
+	created_at TIMESTAMP,
+	username VARCHAR
 	-- cloudinary_id VARCHAR(128) NOT NULL
 );
 -- add user_id column as a foreign key relationship with app_user.id
@@ -17,8 +19,10 @@ CREATE TABLE app_users (
 
 INSERT INTO posts (
 caption,
-image_url
+image_url,
+created_at
 )
-VALUES (
-'is it trash?', ''
-);
+VALUES 
+('is it trash?', '', CURRENT_TIMESTAMP),
+('this is another caption', '', CURRENT_TIMESTAMP),
+('and another caption', '', CURRENT_TIMESTAMP);

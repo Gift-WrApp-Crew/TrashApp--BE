@@ -35,6 +35,7 @@ describe('user routes', () => {
       id: expect.any(String),
       email,
       username,
+      message: 'Successfully signed up'
     });
   });
 
@@ -45,6 +46,7 @@ describe('user routes', () => {
       id: expect.any(String),
       email,
       username,
+      message: 'Successfully signed up'
     });
     const res1 = await request(app)
       .post('/api/v1/users/sessions')
