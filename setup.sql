@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS app_users CASCADE;
+DROP TABLE IF EXISTS reactions CASCADE;
+DROP TABLE IF EXISTS reactions_to_posts CASCADE;
 
 CREATE TABLE posts (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -17,12 +19,39 @@ CREATE TABLE app_users (
 	username TEXT
 );
 
+CREATE TABLE reactions (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	reaction_type TEXT
+);
+
+CREATE TABLE reactions_to_posts (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	app_user_id BIGINT,
+	FOREIGN KEY (app_user_id) REFERENCES app_users(id),
+	post_id BIGINT,
+	FOREIGN KEY (post_id) REFERENCES posts(id),
+	reaction_id BIGINT,
+	FOREIGN KEY (reaction_id) REFERENCES reactions(id)
+);
+
 INSERT INTO posts (
 caption,
 image_url,
-created_at
+created_at,
+username
 )
+
 VALUES 
-('is it trash?', '', CURRENT_TIMESTAMP),
-('this is another caption', '', CURRENT_TIMESTAMP),
-('and another caption', '', CURRENT_TIMESTAMP);
+('is it trash?', '', CURRENT_TIMESTAMP, ''),
+('this is another caption', '', CURRENT_TIMESTAMP, ''),
+('and another caption', '', CURRENT_TIMESTAMP, '');
+
+INSERT INTO reactions (
+	reaction_type
+)
+
+VALUES
+('trash-emoji'),
+('treasure-emoji');
+
+
