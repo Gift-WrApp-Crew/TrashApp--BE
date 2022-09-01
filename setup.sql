@@ -46,9 +46,9 @@ treasure_reaction
 )
 
 VALUES 
-('is it trash?', '', CURRENT_TIMESTAMP, '', 2, 2),
-('this is another caption', '', CURRENT_TIMESTAMP, '', 2, 2),
-('and another caption', '', CURRENT_TIMESTAMP, '', 2, 2);
+('is it trash?', '', CURRENT_TIMESTAMP, '', 0, 0),
+('this is another caption', '', CURRENT_TIMESTAMP, '', 0, 0),
+('and another caption', '', CURRENT_TIMESTAMP, '', 0, 0);
 
 INSERT INTO reactions (
 	reaction_type
