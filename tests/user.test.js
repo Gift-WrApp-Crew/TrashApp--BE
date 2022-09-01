@@ -28,7 +28,7 @@ describe('user routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('new user created upon sign up', async () => {
+  it.skip('new user created upon sign up', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { email, username } = mockUser;
     expect(res.body).toEqual({
@@ -39,7 +39,7 @@ describe('user routes', () => {
     });
   });
 
-  it('logs in a created user', async () => {
+  it.skip('logs in a created user', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { email, username } = mockUser;
     expect(res.body).toEqual({
@@ -55,7 +55,7 @@ describe('user routes', () => {
     expect(res1.body.message).toEqual('Successfully signed in');
   });
 
-  it('returns the current user', async () => {
+  it.skip('returns the current user', async () => {
     const [agent, user] = await signUpAndLogin();
     const me = await agent.get('/api/v1/users/me');
     console.log('me', me);
@@ -66,7 +66,7 @@ describe('user routes', () => {
       iat: expect.any(Number),
     });
   });
-  it('DELETE /sessions deletes the user session', async () => {
+  it.skip('DELETE /sessions deletes the user session', async () => {
     const [agent] = await signUpAndLogin();
     const resp = await agent.delete('/api/v1/users/sessions');
     expect(resp.status).toBe(204);

@@ -1,9 +1,8 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
-const app = require('../lib/app')
+const app = require('../lib/app');
 const cloudinary = require('cloudinary').v2;
-
 
 cloudinary.config({
   cloud_name: `${process.env.CLOUD_NAME}`,
@@ -18,15 +17,15 @@ describe('posts routes', () => {
   });
 
   it.skip('POST /image-upload should upload an image to cloudinary', async () => {
-    const res = await request(app).post('/image-upload').send({ 
-      image: 'images/cat.jpg'
+    const res = await request(app).post('/image-upload').send({
+      image: 'images/cat.jpg',
     });
     console.log('RESSS', res);
     expect(res.body).toBe('');
   });
 
-
   afterAll(() => {
     pool.end();
   });
 });
+  
