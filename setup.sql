@@ -11,9 +11,8 @@ CREATE TABLE posts (
 	username VARCHAR,
   trash_reaction BIGINT,
   treasure_reaction BIGINT
-	-- cloudinary_id VARCHAR(128) NOT NULL
 );
--- add user_id column as a foreign key relationship with app_user.id
+
 CREATE TABLE app_users (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	email TEXT NOT NULL,
@@ -21,20 +20,6 @@ CREATE TABLE app_users (
 	username TEXT
 );
 
-CREATE TABLE reactions (
-	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	reaction_type TEXT
-);
-
-CREATE TABLE reactions_to_posts (
-	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	app_user_id BIGINT,
-	FOREIGN KEY (app_user_id) REFERENCES app_users(id),
-	post_id BIGINT,
-	FOREIGN KEY (post_id) REFERENCES posts(id),
-	reaction_id BIGINT,
-	FOREIGN KEY (reaction_id) REFERENCES reactions(id)
-);
 
 INSERT INTO posts (
 caption,
@@ -46,9 +31,9 @@ treasure_reaction
 )
 
 VALUES 
-('is it trash?', '', CURRENT_TIMESTAMP, '', 0, 0),
-('this is another caption', '', CURRENT_TIMESTAMP, '', 0, 0),
-('and another caption', '', CURRENT_TIMESTAMP, '', 0, 0);
+('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065521/fwaes34gwzackabxdvyr.png', CURRENT_TIMESTAMP, '', 0, 0),
+('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065563/bqvwhl6qr6m6jmcthxmm.png', CURRENT_TIMESTAMP, '', 0, 0),
+('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065592/k0y4b8s92rm7jcnehtd8.png', CURRENT_TIMESTAMP, '', 0, 0);
 
 INSERT INTO reactions (
 	reaction_type

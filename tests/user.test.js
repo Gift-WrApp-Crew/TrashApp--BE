@@ -14,7 +14,6 @@ const signUpAndLogin = async (userProps = {}) => {
   const password = userProps.password ?? mockUser.password;
   const agent = request.agent(app);
   const user = await UserService.create({ ...mockUser, ...userProps });
-  console.log('user', user);
   const { email, username } = user;
   await agent.post('/api/v1/users/sessions').send({
     email,
@@ -58,7 +57,6 @@ describe('user routes', () => {
   it.skip('returns the current user', async () => {
     const [agent, user] = await signUpAndLogin();
     const me = await agent.get('/api/v1/users/me');
-    console.log('me', me);
 
     expect(me.body).toEqual({
       ...user,

@@ -20,7 +20,6 @@ describe('posts routes', () => {
     const res = await request(app).post('/image-upload').send({
       image: 'images/cat.jpg',
     });
-    console.log('RESSS', res);
     expect(res.body).toBe('');
   });
 
@@ -28,4 +27,3 @@ describe('posts routes', () => {
     pool.end();
   });
 });
-  
