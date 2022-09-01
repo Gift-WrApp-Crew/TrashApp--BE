@@ -1,12 +1,16 @@
 DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS app_users CASCADE;
+DROP TABLE IF EXISTS reactions CASCADE;
+DROP TABLE IF EXISTS reactions_to_posts CASCADE;
 
 CREATE TABLE posts (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	caption VARCHAR,
 	image_url VARCHAR(128),
 	created_at TIMESTAMP,
-	username VARCHAR
+	username VARCHAR,
+  trash_reaction BIGINT,
+  treasure_reaction BIGINT
 	-- cloudinary_id VARCHAR(128) NOT NULL
 );
 -- add user_id column as a foreign key relationship with app_user.id
@@ -17,12 +21,41 @@ CREATE TABLE app_users (
 	username TEXT
 );
 
+CREATE TABLE reactions (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	reaction_type TEXT
+);
+
+CREATE TABLE reactions_to_posts (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	app_user_id BIGINT,
+	FOREIGN KEY (app_user_id) REFERENCES app_users(id),
+	post_id BIGINT,
+	FOREIGN KEY (post_id) REFERENCES posts(id),
+	reaction_id BIGINT,
+	FOREIGN KEY (reaction_id) REFERENCES reactions(id)
+);
+
 INSERT INTO posts (
 caption,
 image_url,
-created_at
+created_at,
+username,
+trash_reaction,
+treasure_reaction
 )
+
 VALUES 
-('is it trash?', '', CURRENT_TIMESTAMP),
-('this is another caption', '', CURRENT_TIMESTAMP),
-('and another caption', '', CURRENT_TIMESTAMP);
+('is it trash?', '', CURRENT_TIMESTAMP, '', 0, 0),
+('this is another caption', '', CURRENT_TIMESTAMP, '', 0, 0),
+('and another caption', '', CURRENT_TIMESTAMP, '', 0, 0);
+
+INSERT INTO reactions (
+	reaction_type
+)
+
+VALUES
+('trash-emoji'),
+('treasure-emoji');
+
+
