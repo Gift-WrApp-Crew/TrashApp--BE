@@ -35,9 +35,7 @@ VALUES
 ('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065563/bqvwhl6qr6m6jmcthxmm.png', CURRENT_TIMESTAMP, '', 0, 0),
 ('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065592/k0y4b8s92rm7jcnehtd8.png', CURRENT_TIMESTAMP, '', 0, 0);
 
-INSERT INTO reactions (
-	reaction_type
-)
+
 
 VALUES
 ('trash-emoji'),
