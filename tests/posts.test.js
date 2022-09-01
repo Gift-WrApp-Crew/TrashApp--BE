@@ -56,8 +56,8 @@ describe('posts routes', () => {
   });
 
   it('DELETE /posts/:id should delete a specific post', async () => {
-    const resp = await request(app).delete('api/v1/posts/3');
-    expect(resp.body.id).toBe('3');
+    const resp = await request(app).delete('/api/v1/posts/1');
+    expect(resp.body.id).toBe('1');
   });
 
   afterAll(() => {
