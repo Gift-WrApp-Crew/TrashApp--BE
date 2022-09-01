@@ -8,7 +8,7 @@ describe('posts routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it.only('GET /posts gets a list of all posts', async () => {
+  it.skip('GET /posts gets a list of all posts', async () => {
     const resp = await request(app).get('/api/v1/posts');
     expect(resp.body).toEqual([
       {
@@ -35,12 +35,12 @@ describe('posts routes', () => {
     ]);
   });
 
-  it.only('GET /posts/:id should return a specific post', async () => {
+  it.skip('GET /posts/:id should return a specific post', async () => {
     const resp = await request(app).get('/api/v1/posts/2');
     expect(resp.body.caption).toBe('this is another caption');
   });
 
-  it.only('POST /posts should create a new post', async () => {
+  it.skip('POST /posts should create a new post', async () => {
     const post = {
       caption: 'it IS trash!',
     };
@@ -48,7 +48,7 @@ describe('posts routes', () => {
     expect(resp.body.caption).toBe('it IS trash!');
   });
 
-  it.only('PUT /posts/:id should update a specific post', async () => {
+  it.skip('PUT /posts/:id should update a specific post', async () => {
     const resp = await request(app).put('/api/v1/posts/1').send({
       caption: 'my updated caption',
     });
