@@ -30,18 +30,5 @@ CREATE TABLE favorites (
 	FOREIGN KEY (post_id) REFERENCES posts(id)
 );
 
-INSERT INTO posts (
-caption,
-image_url,
-created_at,
-username,
-trash_reaction,
-treasure_reaction
-)
-
-
-VALUES
-('trash-emoji'),
-('treasure-emoji');
 
 
