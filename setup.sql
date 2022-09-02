@@ -39,12 +39,6 @@ trash_reaction,
 treasure_reaction
 )
 
-VALUES
-('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065521/fwaes34gwzackabxdvyr.png', CURRENT_TIMESTAMP, 'ravebb', 0, 0),
-('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065563/bqvwhl6qr6m6jmcthxmm.png', CURRENT_TIMESTAMP, 'dive_jems3000', 0, 0),
-('Is it trash?', 'https://res.cloudinary.com/trashapp/image/upload/v1662065592/k0y4b8s92rm7jcnehtd8.png', CURRENT_TIMESTAMP, 'kat_lover', 0, 0);
-
-
 
 VALUES
 ('trash-emoji'),
