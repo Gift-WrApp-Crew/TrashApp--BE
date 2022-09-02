@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS app_users CASCADE;
 DROP TABLE IF EXISTS reactions CASCADE;
 DROP TABLE IF EXISTS reactions_to_posts CASCADE;
+DROP TABLE IF EXISTS favorites CASCADE;
 
 CREATE TABLE posts (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -20,6 +21,14 @@ CREATE TABLE app_users (
 	username TEXT
 );
 
+
+CREATE TABLE favorites (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	app_user_id BIGINT,
+	FOREIGN KEY (app_user_id) REFERENCES app_users(id),
+	post_id BIGINT,
+	FOREIGN KEY (post_id) REFERENCES posts(id)
+);
 
 INSERT INTO posts (
 caption,
